@@ -19,6 +19,11 @@ function Header() {
               <a className="text-sm font-semibold">Home</a>
             </Link>
           </li>
+          <li>
+            <Link href="/">
+              <a className="text-sm font-semibold">Search</a>
+            </Link>
+          </li>
         </ul>
       </nav>
     </header>
