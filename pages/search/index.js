@@ -2,7 +2,7 @@ import Head from "next/head";
 import Layout from "../../components/Layout";
 import Link from "next/link";
 import Image from "next/image";
-import { search } from "services/search.js";
+import { search } from "../../services/search";
 // import { useI18N } from "context/i18n.js";
 
 export default function Component({ query, results }) {
