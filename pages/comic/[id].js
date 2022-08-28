@@ -2,10 +2,9 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 
-// import { Layout } from "components/Layout.js";
+import Layout from "../../components/Layout"; 
 import { readFile, readdir, stat } from "fs/promises";
 import { basename } from "path";
-import Header from "../../components/Header";
 
 export default function Comic({
   img,
@@ -25,9 +24,7 @@ export default function Comic({
         <meta name="description" content="Comics for developers" />
       </Head>
 
-      <Header />
-
-      <main>
+      <Layout>
         <section className="max-w-lg m-auto">
           <h1 className="mb-4 text-xl font-bold text-center">{title}</h1>
           <div className="max-w-xs m-auto mb-4">
@@ -55,7 +52,7 @@ export default function Comic({
             )}
           </div>
         </section>
-      </main>
+      </Layout>
     </>
   );
 }
