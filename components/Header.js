@@ -1,9 +1,10 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
 function Header() {
   const [results, setResults] = useState([]);
+  const [cleanSearch, setCleanSearch] = useState(false);
   const searchRef = useRef();
   const { locale, locales } = useRouter();
 
@@ -19,12 +20,15 @@ function Header() {
       .then((searchResults) => {
         setResults(searchResults);
       });
-    
   };
 
-  const handleClick = () => { 
+  const handleClick = () => {
     searchRef.current.value = "";
-  }
+    setCleanSearch[cleanSearch = !cleanSearch];
+    setResults([]);
+  };
+
+  useEffect(() => {}, [results]);
 
   // const restOfLocales = locales.filter((l) => l !== locale);
 
@@ -52,7 +56,7 @@ function Header() {
               onChange={handleChange}
               ref={searchRef}
             />
-            <button onClick={handleClick}> X</button>
+            <button className="px-2 ml-2 rounded-xl bg-gray-200" onClick={handleClick}> Clean search</button>
 
             <div className="relative z-10">
               {Boolean(results.length) && (
@@ -66,11 +70,14 @@ function Header() {
                       </Link>
                     </li>
 
-                    {results.map((result) => {
+                    {results && results.map((result) => {
                       return (
                         <li className="m-0" key={result.id}>
                           <Link href={`/comic/${result.id}`}>
-                            <a className="block px-2 py-1 overflow-hidden text-sm font-semibold hover:bg-slate-200 text-ellipsis whitespace-nowrap">
+                            <a
+                              onClick={handleClick}
+                              className="block px-2 py-1 overflow-hidden text-sm font-semibold hover:bg-slate-200 text-ellipsis whitespace-nowrap"
+                            >
                               {result.title}
                             </a>
                           </Link>
