@@ -62,18 +62,13 @@ export async function getStaticPaths({ locales }) {
   let paths = [];
 
   // locales -> ['es', 'en]
-  // locales.forEach((locale) => {
-  //   paths = paths.concat(
-  //     files.map((file) => {
-  //       const id = basename(file, ".json");
-  //       return { params: { id }, locale };
-  //     })
-  //   );
-  // });
-
-  paths = files.map((file) => {
-    const id = basename(file, ".json");
-    return { params: { id }};
+  locales.forEach((locale) => {
+    paths = paths.concat(
+      files.map((file) => {
+        const id = basename(file, ".json");
+        return { params: { id }, locale };
+      })
+    );
   });
 
   return {

@@ -6,19 +6,19 @@ const API_KEY = process.env.API_KEY;
 const client = algoliasearch(APP_ID, API_KEY);
 const index = client.initIndex("xkcd");
 
-// const CACHE = {};
+const CACHE = {};
 
 export const search = async ({ query }) => {
-  // if (CACHE[query]) {
-  //   return { results: CACHE[query] };
-  // }
+  if (CACHE[query]) {
+    return { results: CACHE[query] };
+  }
 
   const { hits } = await index.search(query, {
     attributesToRetrieve: ["id", "title", "img", "alt"],
     hitsPerPage: 10,
   });
 
-  // CACHE[query] = hits;
+  CACHE[query] = hits;
 
   return { results: hits };
 };
