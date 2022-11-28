@@ -1,4 +1,4 @@
-## Getting Started
+## XKCD-APP Next.js
 
 Aplicacion desarrollada con Next js e implementacion de I18n service (translation), que consume la API https://xkcd.com/json.html
 
