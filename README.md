@@ -10,4 +10,4 @@ Aplicación deployada en: https://xkcd-app-fuhrn.vercel.app/es para versión en 
 
 ![Alt text](img/detail.png)
 
-[label](img/home_es.png%0D) [label](node_modules)
+![Alt text](img/home_es.png)
